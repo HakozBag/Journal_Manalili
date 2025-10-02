@@ -1,12 +1,10 @@
+
 :root {
     --bg-light: #fcfbf8; 
     --card-paper: #fffcf3; 
     --accent-dark: #4A4A4A; 
-    --line-color: #e0e0e0; 
+    --line-color-light: #e0e0e0; 
     --text-ink: #2c2c2c;
-    --shadow-color-light: rgba(0, 0, 0, 0.2);
-    --shadow-inset-light: rgba(0, 0, 0, 0.05);
-    --border-color-main-light: #ddd;
     --page-line-height: 2.2rem;
     --text-line-height: 1.5rem;
 }
@@ -16,9 +14,10 @@
     --card-paper-themed: var(--card-paper);
     --primary-text: var(--text-ink);
     --secondary-text: #666;
-    --shadow-color: var(--shadow-color-light);
-    --shadow-inset: var(--shadow-inset-light);
-    --border-color-main: var(--border-color-main-light);
+    --line-color: var(--line-color-light);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --shadow-inset: rgba(0, 0, 0, 0.05);
+    --border-color-main: #ddd;
 }
 
 .dark-theme {
@@ -45,11 +44,15 @@ body {
     transition: background-color 0.3s ease;
 }
 
+
 .profile-card {
     background-color: var(--card-paper-themed);
     box-shadow: 0 4px 12px var(--shadow-color);
     border: 1px solid var(--border-color-main);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.profile-card h3, .profile-card p {
+    color: var(--primary-text);
 }
 
 .theme-switch-btn {
@@ -61,6 +64,7 @@ body {
 .theme-switch-btn:hover {
     background-color: var(--line-color);
 }
+
 
 #journalContainer {
     width: 90%;
@@ -76,6 +80,7 @@ body {
     overflow: hidden; 
 }
 
+
 #journal-page {
     position: relative;
     width: 100%;
@@ -88,6 +93,7 @@ body {
     flex-direction: column;
     transition: background-color 0.3s ease;
 }
+
 
 .page-header {
     border-bottom: 1px solid var(--border-color-main); 
@@ -108,6 +114,7 @@ body {
 .pageNumber {
     color: var(--secondary-text);
 }
+
 
 .pageContent {
     position: relative;
@@ -135,10 +142,12 @@ body {
     transition: background 0.3s ease;
 }
 
+
 #journal-page .pageContent .text-center > h2 {
     margin-top: calc(var(--page-line-height) / 2); 
     margin-bottom: calc(var(--page-line-height) / 2); 
 }
+
 
 .pageContent .list-ruled {
     list-style: none;
@@ -163,6 +172,7 @@ body {
     color: var(--secondary-text); 
 }
 
+
 .nav-btn {
     background-color: transparent;
     color: var(--accent-dark);
@@ -183,6 +193,7 @@ body {
     cursor: not-allowed;
     opacity: 1;
 }
+
 
 @media (max-width: 768px) {
     #journalContainer {
