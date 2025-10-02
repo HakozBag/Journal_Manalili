@@ -6,15 +6,14 @@
     --text-ink: #2c2c2c;
     --page-line-height: 2.2rem; 
     --text-line-height: 1.5rem; 
-    --transition-duration: 0.6s; /* Set a CSS variable for animation speed */
+    --transition-duration: 0.3s;
 }
 
 body {
     font-family: 'Merriweather', serif; 
-    background-color: var(--bg-light); /* Fallback color */
-    /* NEW: Subtle Background Texture */
+    background-color: var(--bg-light);
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300"><defs><filter id="n" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" result="t"/><feColorMatrix in="t" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.2 0"/></filter></defs><rect width="100%" height="100%" fill="%23f7f5ee"/><rect width="100%" height="100%" filter="url(%23n)" opacity="0.3"/></svg>');
-    background-size: 150px; /* Control the scale of the noise/texture */
+    background-size: 150px;
     color: var(--text-ink);
     display: flex;
     flex-direction: column;
@@ -22,8 +21,6 @@ body {
     justify-content: center;
     min-height: 100vh;
     padding: 20px;
-    /* Enable 3D space for the folding effect */
-    perspective: 1500px;
 }
 
 .dot-icon {
@@ -42,9 +39,6 @@ body {
     z-index: 1;
     background: transparent; 
     overflow: hidden; 
-    /* NEW: Transform properties for the folding animation */
-    transition: transform var(--transition-duration) ease-in-out;
-    transform-style: preserve-3d;
 }
 
 #journal-page {
@@ -57,20 +51,7 @@ body {
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); 
     display: flex;
     flex-direction: column;
-    /* Ensure the page itself participates in 3D */
-    transform-origin: left center;
-    transition: transform var(--transition-duration) ease-in-out;
 }
-
-/* NEW: Styles for the fold effect */
-.folding {
-    transform: rotateY(-180deg);
-}
-
-.folding-back {
-    transform: rotateY(180deg);
-}
-/* End of NEW fold styles */
 
 .page-header {
     border-bottom: 1px solid #ddd; 
@@ -78,7 +59,6 @@ body {
     margin-bottom: 2rem;
 }
 
-/* ... (rest of CSS remains the same) ... */
 .pageTitle {
     font-size: 2rem;
     font-weight: 700;
@@ -102,7 +82,16 @@ body {
     line-height: var(--page-line-height); 
     overflow-y: auto;
     flex-grow: 1;
+    opacity: 1;
+    filter: blur(0px);
+    transition: opacity var(--transition-duration) ease-out, filter var(--transition-duration) ease-out;
 }
+
+.pageContent.fade-out {
+    opacity: 0;
+    filter: blur(5px);
+}
+
 
 .pageContent::before {
     content: '';
