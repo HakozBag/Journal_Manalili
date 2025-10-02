@@ -79,12 +79,11 @@ const journalContent = [
     { id: 'grateful', title: "l. Grateful Credits", category: "Acknowledgements", content: [
         "My family.",
         "My friends.",
-        "The opportunities I get to learn and grow.",
+        "LThe opportunities I get to learn and grow.",
         "My resilience when things gets tough.",
         "The small joys in life, like music, games, and laughter."
     ]},
 ];
-
 
 const getThemeIcon = (isDark) => {
     const moonIcon = document.getElementById('moonIcon');
@@ -127,9 +126,6 @@ const initializeTheme = () => {
     }
 };
 
-
-
-
 const formatContent = (content) => {
     if (Array.isArray(content)) {
         const dotIcon = `<svg class="w-2.5 h-2.5 mr-3 mt-1 dot-icon flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12"/></svg>`;
@@ -138,21 +134,33 @@ const formatContent = (content) => {
     return content;
 };
 
-const renderContentToFace = (index, faceElement) => {
+const updatePageElements = (index) => {
     const page = journalContent[index];
     if (!page) return;
 
-    faceElement.querySelector('.pageTitle').innerHTML = page.title;
-    faceElement.querySelector('.pageCategory').innerHTML = page.category;
-    faceElement.querySelector('.pageContent').innerHTML = formatContent(page.content);
-    faceElement.querySelector('.pageNumber').innerHTML = `Page ${index + 1} / ${journalContent.length}`;
-};
+    const pageElement = document.getElementById('journal-page');
+    pageElement.querySelector('.pageTitle').innerHTML = page.title;
+    pageElement.querySelector('.pageCategory').innerHTML = page.category;
+    pageElement.querySelector('.pageContent').innerHTML = formatContent(page.content);
+    pageElement.querySelector('.pageNumber').innerHTML = `Page ${index + 1} / ${journalContent.length}`;
+}
 
 const renderPage = (index) => {
     const pageElement = document.getElementById('journal-page');
+    const contentArea = pageElement.querySelector('.pageContent');
     
     if (pageElement) {
-        renderContentToFace(index, pageElement);
+        pageElement.classList.add('fade-out');
+
+        setTimeout(() => {
+            updatePageElements(index);
+            pageElement.classList.remove('fade-out');
+            pageElement.classList.add('fade-in');
+            
+            setTimeout(() => {
+                pageElement.classList.remove('fade-in');
+            }, 500);
+        }, 300);
     }
     
     document.getElementById('prevBtn').disabled = index === 0;
@@ -168,10 +176,9 @@ const navigate = (direction) => {
     }
 };
 
-
 window.onload = () => {
     initializeTheme();
-    renderPage(currentPageIndex);
+    updatePageElements(currentPageIndex);
 
     document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
     document.getElementById('prevBtn').addEventListener('click', () => navigate(-1));
