@@ -10,76 +10,76 @@ const journalContent = [
             </div>
         </div>
     ` },
-    { id: 'describe', title: "a. Describe Yourself", category: "Character Profile", content: `
-        <p class="text-sm italic mb-4 text-secondary-text">My nature and energy:</p>
-        <p class="text-base leading-relaxed tracking-wide text-primary-text">I am an **energetic person** especially when it comes to parties or spending time with people. I enjoy being with others rather than being alone since I believe that shared moments are more fun and meaningful. I usually try not to overthink unless it is really necessary. I manage to balance my school responsibilities with my tendency to spend time on lighter things, keeping a sense of fun. I enjoy lighthearted situations more than tense or overly serious ones, and prefer to keep conversations **easygoing** and funny.</p>
+    { id: 'describe', title: "a. Describe Yourself (Official)", category: "Character Profile", content: `
+        <p class="text-sm italic mb-4 text-secondary-text">My official character description:</p>
+        <p class="text-base leading-relaxed tracking-wide text-primary-text">I’m someone who is curious, creative, and always looking for ways to improve. I enjoy learning new things, even when it’s challenging. Sometimes I overthink, but it just shows I care deeply about what I do.</p>
         ` },
-    { id: 'quote', title: "c. My Favorite Quote", category: "Inspiration", content: `
-        <p class="text-sm italic mb-4 text-secondary-text">My simple truth:</p>
-        <p class="text-2xl leading-relaxed tracking-wide text-center pt-8 text-primary-text" style="font-style: italic;">“Life is better when you are laughing.”</p>
-        <p class="text-sm leading-relaxed tracking-wide mt-8 text-secondary-text">Laughter makes almost anything lighter, whether it's a serious situation, a small problem, or just an ordinary day. I am the type of person who enjoys keeping things fun and easy, and I believe even the hardest days can become easier if you find a reason to laugh.</p>
+    { id: 'describe_gang', title: "a. Describe Myself (Inner Voice)", category: "Raw Footage", content: `
+        <p class="text-sm italic mb-4 text-secondary-text">The director's cut narration:</p>
+        <p class="text-base leading-relaxed tracking-wide text-primary-text">They’re the type of person who’s always tryna level up. They get curious about a ton of stuff and stay learning new knowledge especially when it switches up how they think. They can definitely get creative like flipping small random ideas into something that hits deep. But real talk coming up with brand new ideas is tough for them. They also tend to overthink everything and doubt if their ideas even got the juice. Still that just proves they care about the work and the outcome they’re chasing. They mess with writing solving problems and creating stuff so you could call them a hands on type of person no doubt. They’re patient most of the time but when they get stuck they’ll get tight. Even then they usually push past it because they’re stubborn and they hate to fold. They really respect people who are genuine and honest and they keep that same energy. They know they ain’t flawless. They procrastinate and sometimes lose confidence in their own voice and they can be way too hard on themselves. But they’re learning to accept those flaws while still being grateful for who they already am.</p>
         ` },
-    { id: 'likes', title: "d. Things I Like About Myself", category: "Core Strengths", content: [
-        "I am energetic and outgoing.",
-        "I enjoy being around people more than being alone.",
-        "I can make others laugh and lighten the mood.",
-        "I balance responsibilities with having fun.",
-        "I try not to overthink unless it is needed.",
-        "I do not dwell too much on problems.",
-        "I prefer to keep things positive and easygoing.",
-        "I bring good energy when I am with others."
+    { id: 'quotes', title: "b. Favorite Dialogue", category: "Inspiration", content: [
+        "“Growth is growth, no matter how small.”",
+        "“The only person you should try to be better than is the person you were yesterday.”"
     ]},
-    { id: 'dislikes', title: "e. Things I Don’t Like About Myself", category: "Bugs & Features", content: [
-        "I get distracted easily.",
-        "I sometimes spend too much time on unimportant things.",
-        "I struggle to stay serious in conversations.",
-        "I avoid heavy or tense situations.",
-        "I procrastinate when I should focus.",
-        "I overthink at times even when I try not to.",
-        "I find it hard to handle serious topics without turning them into jokes."
+    { id: 'likes', title: "c. Core Strengths", category: "Power-Ups", content: [
+        "I’m creative and resourceful.",
+        "I have a good sense of humor.",
+        "I care for the people close to me.",
+        "I can adapt to different situations.",
+        "I don’t easily give up when things get hard."
     ]},
-    { id: 'talents', title: "f. Special Talents", category: "Skill Tree", content: [
-        "Playing some basics in piano, i guess.",
-        "Lowkey multitask."
+    { id: 'dislikes', title: "d. Vulnerability Patches", category: "Bugs & Features", content: [
+        "I sometimes procrastinate.",
+        "I get insecure about how I express myself.",
+        "I can be too hard on myself."
     ]},
-    { id: 'poem', title: "g. Poem (In 3rd Person)", category: "Monologue", content: `
+    { id: 'talents', title: "e. Special Talents", category: "Skill Tree", content: [
+        "Writing and expressing ideas.",
+        "Problem-solving in unique ways.",
+        "Creativity in both practical and artistic things."
+    ]},
+    { id: 'poem', title: "f. Self-Reflection Poem", category: "Monologue", content: `
         <p class="whitespace-pre-line leading-relaxed text-center italic mt-4 text-primary-text">
-            Cards on the table, the night’s just begun,
-            Chips start to stack while others are done, 
-            Luck on my side, I play it for fun,
-            In house gambling, I alone am the honored one.
+            He walked through days of questions and doubts,
+            Carrying dreams that whispered loud.
+            Behind the struggles, a fire still burned,
+            A reminder of lessons he’s slowly learned.
+            Though shadows came, light never left,
+            He kept moving forward, step by step.
         </p>
         ` },
-    { id: 'conscious', title: "h. Things I’m Self-Conscious About", category: "Known Flaws", content: [
+    { id: 'conscious', title: "g. Conscious Weaknesses", category: "Known Flaws", content: [
         "How I sound when I speak.",
         "Making mistakes in front of others.",
         "Not always being confident enough."
     ]},
-    { id: 'respect', title: "i. If I Upgraded My Character...", category: "Commitment", content: `
-        <p class="text-sm italic mt-4 text-secondary-text">My goal for growth:</p>
-        <p class="text-base font-semibold leading-relaxed text-primary-text">
-            If I stop trying to force my ideals on others and instead learn to **listen and respect their own perspectives**, I would love myself more because I know I am growing into someone who values understanding over control.
+    { id: 'respect', title: "h. If I Upgraded My Character...", category: "Commitment", content: `
+        <p class="text-sm font-semibold italic mt-4 text-primary-text">
+            …I trusted myself more and stopped comparing myself to others.
         </p>
         ` },
-    { id: 'forgiveness', title: "j. Forgiveness Dialogue", category: "Post-Production", content: `
-        <p class="text-sm italic mt-4 text-secondary-text">My condition for forgiveness:</p>
-        <p class="text-base leading-relaxed text-primary-text">I would forgive if someone’s **pride is set in the right place**, because it shows that their actions come from **honesty** and not from arrogance, and that makes it easier for me to understand and let go.</p>
-        ` },
-    { id: 'feelings', title: "k. Feelings That Are Hard to Accept", category: "Emotional Check", content: [
-        "Regret over past decisions.",
-        "Failure after trying hard.",
-        "Disappointment in myself."
+    { id: 'forgiveness', title: "i. Healing Dialogue", category: "Post-Production", content: [
+        { label: "Target for Forgiveness", text: "myself, for being too harsh sometimes." },
+        { label: "Who should forgive me", text: "people I may have unintentionally hurt." },
+        { label: "Self-Forgiveness Subject", text: "not always believing in my own worth." }
     ]},
-    { id: 'difficult', title: "l. Runtime Complications", category: "Growth Areas", content: [
-        "Balancing fun and responsibilities.",
-        "Admitting when I am wrong."
+    { id: 'feelings', title: "j. Hard-to-Accept Feelings", category: "Emotional Check", content: [
+        "Feeling insecure.",
+        "Feeling lonely.",
+        "Feeling like I’m not enough."
     ]},
-    { id: 'grateful', title: "m. Grateful Credits", category: "Acknowledgements", content: [
-        "God for giving all of us good health.",
+    { id: 'difficult', title: "k. Runtime Complications", category: "Growth Areas", content: [
+        "Speaking confidently in public.",
+        "Managing pressure and overthinking.",
+        "Showing my real feelings sometimes."
+    ]},
+    { id: 'grateful', title: "l. Grateful Credits", category: "Acknowledgements", content: [
         "My family.",
-        "Opportunities that help me grow.",
-        "Everyday routine.",
-        "Having good source of entertainment."
+        "My friends.",
+        "The opportunities I get to learn and grow.",
+        "My resilience when things gets tough.",
+        "The small joys in life, like music, games, and laughter."
     ]},
 ];
 
@@ -122,6 +122,13 @@ const initializeTheme = () => {
 
 const formatContent = (content) => {
     if (Array.isArray(content)) {
+        if (content.length > 0 && typeof content[0] === 'object' && content[0].label) {
+             const listItems = content.map(item => 
+                `<li class="flex items-start ruled-list-item"><span class="font-semibold text-primary-text">${item.label}:</span> <span class="text-secondary-text">${item.text}</span></li>`
+            ).join('');
+             return `<ul class="list-ruled mt-0 text-base">${listItems}</ul>`;
+        }
+        
         const dotIcon = `<svg class="w-2.5 h-2.5 mr-3 mt-1 dot-icon flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12"/></svg>`;
         return `<ul class="list-ruled mt-0 text-base" >${content.map(item => `<li class="flex items-start ruled-list-item">${dotIcon}<span>${item}</span></li>`).join('')}</ul>`;
     }
