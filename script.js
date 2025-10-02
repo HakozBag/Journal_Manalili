@@ -143,7 +143,7 @@ const renderPage = (index) => {
     const pageElement = document.getElementById('journal-page');
     const pageContentElement = pageElement.querySelector('.pageContent');
     const pageHeaderElement = pageElement.querySelector('.page-header');
-    const pageNumberElement = pageElement.querySelector('.pageNumber').parentNode; // Parent of pageNumber as it's a <p> tag
+    const pageNumberElement = pageElement.querySelector('.pageNumber').parentNode; 
 
     if (pageElement) {
         // Apply fade-out to header, content, and page number
@@ -168,13 +168,13 @@ const renderPage = (index) => {
                 pageNumberElement.classList.add('text-fade-in');
             }
             
-            // Remove fade-in after animation
+         
             setTimeout(() => {
                 if (pageHeaderElement) pageHeaderElement.classList.remove('text-fade-in');
                 if (pageContentElement) pageContentElement.classList.remove('text-fade-in');
                 if (pageNumberElement) pageNumberElement.classList.remove('text-fade-in');
-            }, 600); // Match animation duration + delay
-        }, 300); // Duration of fade-out animation
+            }, 600); 
+        }, 300);
     }
     
     document.getElementById('prevBtn').disabled = index === 0;
