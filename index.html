@@ -3,50 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Reflection Journal</title>
+    <title>Dashboard Self-Reflection Journal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body id="app-body">
 
     <div class="w-full max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mb-6 flex justify-center">
-        <div class="flex items-center profile-card p-5 rounded-xl transition transform hover:scale-[1.01] duration-300">
+        <div class="flex items-center bg-gray-950/80 p-5 rounded-xl shadow-2xl shadow-cyan-900/30 border border-cyan-700/50 transition transform hover:scale-[1.01] duration-300">
             <div class="text-center mr-6">
-                <p class="text-sm uppercase tracking-widest" style="color: #888;">Journal Author</p>
-                <h3 class="text-3xl font-extrabold leading-tight">Cyrus Dominic</h3>
-                <p class="text-xl font-medium" style="color: #666;">Manalili</p>
+                <p class="text-sm uppercase tracking-widest text-cyan-400">User Profile</p>
+                <h3 class="text-3xl font-extrabold text-white leading-tight">Cyrus Dominic</h3>
+                <p class="text-xl font-medium text-gray-300">Manalili</p>
             </div>
             <img 
-                src="assets/photo.jpg" 
-                class="w-24 h-24 object-cover rounded-full border-4" style="border-color: var(--accent-dark);"
+                src="https://placehold.co/90x90/1F1F1F/22D3EE?text=CD" 
+                onerror="this.onerror=null;this.src=''" 
+                class="w-24 h-24 object-cover rounded-full border-4 border-cyan-400 shadow-2xl transition duration-300 hover:border-white" 
                 alt="Profile Picture"
             />
         </div>
     </div>
 
     <div id="journalContainer" class="mt-4">
-        <div id="journal-page">
+        <div id="page-flip-container">
             
-            <div class="page-header">
-                <p class="pageCategory text-sm tracking-widest mb-1">Category</p>
-                <h1 class="pageTitle">Title</h1>
+            <div id="front-face" class="card-face">
+                <div class="page-header">
+                    <p class="pageCategory text-sm tracking-widest uppercase font-mono text-cyan-400 mb-1">Category</p>
+                    <h1 class="pageTitle text-3xl text-white">Title</h1>
+                </div>
+                <div class="pageContent text-gray-300 leading-relaxed overflow-y-auto h-full">
+                </div>
+                <div class="absolute bottom-4 left-6 text-sm font-semibold text-gray-500">
+                    <p class="pageNumber"></p>
+                </div>
             </div>
-            <div class="pageContent leading-relaxed">
+
+            <div id="back-face" class="card-face">
+                <div class="page-header">
+                    <p class="pageCategory text-sm tracking-widest uppercase font-mono text-cyan-400 mb-1">Category</p>
+                    <h1 class="pageTitle text-3xl text-white">Title</h1>
+                </div>
+                <div class="pageContent text-gray-300 leading-relaxed overflow-y-auto h-full">
+                </div>
+                <div class="absolute bottom-4 left-6 text-sm font-semibold text-gray-500">
+                    <p class="pageNumber"></p>
+                </div>
             </div>
-            <div class="absolute bottom-4 left-6 text-sm font-semibold">
-                <p class="pageNumber"></p>
-            </div>
+
         </div>
     </div>
 
     <div class="flex space-x-4 mt-8 w-full max-w-lg justify-center">
-        <button id="prevBtn" class="nav-btn py-3 px-8 rounded-full">
-            &larr; Previous Page
+        <button id="prevBtn" class="nav-btn py-3 px-8 rounded-full disabled:opacity-70">
+            &larr; Previous Episode
         </button>
-        <button id="nextBtn" class="nav-btn py-3 px-8 rounded-full">
-            Next Page &rarr;
+        <button id="nextBtn" class="nav-btn py-3 px-8 rounded-full disabled:opacity-70">
+            Next Episode &rarr;
         </button>
     </div>
     
