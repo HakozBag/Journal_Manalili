@@ -10,8 +10,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body id="app-body">
+<body id="app-body" class="light-theme">
 
+    <button id="themeToggleBtn" class="p-3 rounded-full theme-switch-btn fixed top-6 right-6 z-20" aria-label="Toggle dark/light theme">
+        <svg id="sunIcon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" style="display: none;"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.485 5.165a.75.75 0 01.043 1.064l-1.5 1.5a.75.75 0 11-1.06-1.064l1.5-1.5a.75.75 0 011.018-.004zM2.25 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3a.75.75 0 01-.75-.75zM5.165 16.515a.75.75 0 01-1.064-.043l-1.5-1.5a.75.75 0 111.06-1.064l1.5 1.5a.75.75 0 01-.004 1.018zM12 18.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zM16.515 19.165a.75.75 0 01-1.018.004l-1.5-1.5a.75.75 0 011.06-1.064l1.5 1.5a.75.75 0 01.043 1.064zM18.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM19.165 7.485a.75.75 0 01-1.064.043l-1.5 1.5a.75.75 0 11-1.06-1.064l1.5-1.5a.75.75 0 011.018-.004zM12 9a3 3 0 100 6 3 3 0 000-6z"/></svg>
+        <svg id="moonIcon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" style="display: none;"><path fill-rule="evenodd" d="M9.52 2.472a.75.75 0 01.748.046 10.236 10.236 0 008.815 11.233.75.75 0 01.597.944 6.503 6.503 0 01-5.744 4.298 10.57 10.57 0 01-10.297-11.644 10.237 10.237 0 004.97-4.706.75.75 0 01.75-.045z" clip-rule="evenodd"/></svg>
+    </button>
+    
     <div class="w-full max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mb-6 flex justify-center">
         <div class="flex items-center profile-card p-5 rounded-xl transition transform hover:scale-[1.01] duration-300">
             <div class="ml-6"> 
