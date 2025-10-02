@@ -1,26 +1,22 @@
-/* Modern Dark/Dashboard Theme */
 :root {
-    --bg-dark: #121212; /* Deep Charcoal */
-    --card-dark: #1F1F1F; /* Slightly lighter card background */
-    --accent-cyan: #22D3EE; /* Modern Cyan */
+    --bg-dark: #121212;
+    --card-dark: #1F1F1F;
+    --accent-cyan: #22D3EE;
     --text-light: #E0E0E0;
     --flip-duration: 600ms;
 }
 
-/* NEW: Keyframes for Subtle Background Animation */
 @keyframes subtle-pan {
     0% { background-position: 0% 0%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 100%; }
 }
 
-/* Background and Global Style */
 body {
     font-family: 'Inter', sans-serif;
-    /* Use a dark radial gradient for depth and set it up for animation */
     background: radial-gradient(circle at 50% 50%, #1a1a1a, #0d0d0d, #000000);
-    background-size: 300% 300%; /* Make it large for subtle movement */
-    animation: subtle-pan 45s infinite alternate ease-in-out; /* Slow, continuous movement */
+    background-size: 300% 300%;
+    animation: subtle-pan 45s infinite alternate ease-in-out;
     color: var(--text-light);
     display: flex;
     flex-direction: column;
@@ -30,7 +26,6 @@ body {
     padding: 20px;
 }
 
-/* NEW: Keyframe Animation for Subtle Glow */
 @keyframes subtle-glow {
     0% {
         box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 10px rgba(34, 211, 238, 0.3);
@@ -43,14 +38,12 @@ body {
     }
 }
 
-/* 1. Outer Container: Holds perspective and dimensions */
 #journalContainer {
     perspective: 1500px; 
     width: 90%;
     max-width: 850px; 
     height: 80vh; 
     max-height: 700px;
-    /* Applying stronger base shadow and new glow animation */
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.9); 
     animation: subtle-glow 8s infinite alternate ease-in-out; 
     border-radius: 16px;
@@ -59,25 +52,20 @@ body {
     background: transparent; 
 }
 
-/* 2. Flip Container: Handles the rotation */
 #page-flip-container {
     width: 100%;
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    /* Set the transition for smooth rotation */
     transition: transform var(--flip-duration) cubic-bezier(0.4, 0.0, 0.2, 1);
-    /* Initial transform is now set in JS */
     transform: rotateY(0deg); 
 }
 
-/* 3. Card Faces: The front and back of the content */
 .card-face {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    /* Ensure the face itself has the dark background */
     background-color: var(--card-dark); 
     border-radius: 16px;
     padding: 2.5rem;
@@ -86,14 +74,12 @@ body {
     flex-direction: column;
 }
 
-/* Initial state of the back face to be flipped */
 #back-face {
     transform: rotateY(180deg);
 }
 
-/* Page Content Structure */
 .page-header {
-    border-bottom: 1px solid #333; /* Soft divider */
+    border-bottom: 1px solid #333;
     padding-bottom: 1rem;
     margin-bottom: 2rem;
 }
@@ -105,7 +91,6 @@ body {
     color: white;
 }
 
-/* Navigation Buttons - Modern, subtle, and accent-colored */
 .nav-btn {
     background-color: var(--accent-cyan);
     color: var(--bg-dark);
@@ -128,7 +113,6 @@ body {
     box-shadow: none;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     #journalContainer {
         height: 95vh;
