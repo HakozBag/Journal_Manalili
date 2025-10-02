@@ -1,10 +1,7 @@
-// --- Core Application Logic ---
-
 let currentPageIndex = 0;
-let totalRotation = 0; // Tracks cumulative rotation for directional flipping
+let totalRotation = 0;
 const FLIP_DURATION_MS = 600;
 
-// Content Data (Fixed static content structure for the pages)
 const journalContent = [
     { id: 'cover', title: "Welcome, User", category: "Your Personal Dashboard", content: `
         <div class="space-y-4 pt-12 text-center">
@@ -44,7 +41,7 @@ const journalContent = [
         "Problem-solving in unique ways.",
         "Creativity in both practical and artistic things."
     ]},
-    { id: 'poem', title: "**Episode F. Self-Reflection Poem**", category: "Monologue", content: `
+    { id: 'poem', title: "Episode F. Self-Reflection Poem", category: "Monologue", content: `
         <p class="whitespace-pre-line leading-relaxed text-center italic mt-4 text-gray-300">
             He walked through days of questions and doubts,
             Carrying dreams that whispered loud.
@@ -91,17 +88,14 @@ const journalContent = [
 ];
 
 
-// Utility to handle array content vs string content
 const formatContent = (content) => {
     if (Array.isArray(content)) {
-        // Use a modern dot/circle icon with cyan accent
         const dotIcon = `<svg class="w-2.5 h-2.5 mr-3 mt-1 text-cyan-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12"/></svg>`;
         return `<ul class="space-y-3 mt-4 text-gray-300 text-base">${content.map(item => `<li class="flex items-start">${dotIcon}<span>${item}</span></li>`).join('')}</ul>`;
     }
     return content;
 };
 
-// Renders content to the specific card face
 const renderContentToFace = (index, faceElement) => {
     const page = journalContent[index];
     if (!page) return;
@@ -115,7 +109,6 @@ const renderContentToFace = (index, faceElement) => {
 const renderPage = (index) => {
     const flipContainer = document.getElementById('page-flip-container');
     
-    // Determine the current visible face based on totalRotation parity
     const isBackFaceActive = (Math.abs(totalRotation / 180) % 2) !== 0;
 
     const activeFace = isBackFaceActive 
@@ -126,15 +119,10 @@ const renderPage = (index) => {
         renderContentToFace(index, activeFace);
     }
     
-    // Disable/Enable buttons
     document.getElementById('prevBtn').disabled = index === 0;
     document.getElementById('nextBtn').disabled = index === journalContent.length - 1;
 };
 
-/**
- * Navigation function to handle the flip card animation with directional control.
- * @param {number} direction - 1 for next page (left flip), -1 for previous page (right flip).
- */
 const navigate = (direction) => {
     const newIndex = currentPageIndex + direction;
 
@@ -143,31 +131,23 @@ const navigate = (direction) => {
         const frontFace = document.getElementById('front-face');
         const backFace = document.getElementById('back-face');
 
-        // Determine which face will be visible *after* the flip
         const willBeRotated = totalRotation + (direction * 180);
         const isBackFaceWillBeVisible = (Math.abs(willBeRotated / 180) % 2) !== 0;
         const nextFace = isBackFaceWillBeVisible ? backFace : frontFace;
         
-        // 1. Pre-render the new content onto the face that will become visible
         renderContentToFace(newIndex, nextFace);
 
-        // 2. Update cumulative rotation based on direction
         if (direction > 0) {
-            // Next page: Rotate left (negative direction)
             totalRotation -= 180;
         } else {
-            // Previous page: Rotate right (positive direction)
             totalRotation += 180;
         }
         
-        // 3. Apply the new rotation immediately to start the animation
         flipContainer.style.transform = `rotateY(${totalRotation}deg)`;
 
-        // 4. Update the global index and clean up after the animation is complete
         setTimeout(() => {
             currentPageIndex = newIndex;
             
-            // Re-render the content onto the now visible face to ensure button states and content are correct
             renderPage(currentPageIndex); 
         }, FLIP_DURATION_MS);
     }
@@ -175,7 +155,6 @@ const navigate = (direction) => {
 
 
 window.onload = () => {
-    // Render initial content on the front face
     renderPage(currentPageIndex);
 
     document.getElementById('prevBtn').addEventListener('click', () => navigate(-1));
