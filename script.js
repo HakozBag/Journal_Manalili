@@ -141,24 +141,40 @@ const updatePageElements = (index) => {
 
 const renderPage = (index) => {
     const pageElement = document.getElementById('journal-page');
-    
-    if (pageElement) {
-      
-        pageElement.classList.add('fade-out');
+    const pageContentElement = pageElement.querySelector('.pageContent');
+    const pageHeaderElement = pageElement.querySelector('.page-header');
+    const pageNumberElement = pageElement.querySelector('.pageNumber').parentNode; // Parent of pageNumber as it's a <p> tag
 
-    
+    if (pageElement) {
+        // Apply fade-out to header, content, and page number
+        if (pageHeaderElement) pageHeaderElement.classList.add('text-fade-out');
+        if (pageContentElement) pageContentElement.classList.add('text-fade-out');
+        if (pageNumberElement) pageNumberElement.classList.add('text-fade-out');
+
         setTimeout(() => {
             updatePageElements(index);
-            pageElement.classList.remove('fade-out');
             
-         
-            pageElement.classList.add('fade-in');
+            // Remove fade-out and add fade-in
+            if (pageHeaderElement) {
+                pageHeaderElement.classList.remove('text-fade-out');
+                pageHeaderElement.classList.add('text-fade-in');
+            }
+            if (pageContentElement) {
+                pageContentElement.classList.remove('text-fade-out');
+                pageContentElement.classList.add('text-fade-in');
+            }
+            if (pageNumberElement) {
+                pageNumberElement.classList.remove('text-fade-out');
+                pageNumberElement.classList.add('text-fade-in');
+            }
             
-          
+            // Remove fade-in after animation
             setTimeout(() => {
-                pageElement.classList.remove('fade-in');
-            }, 500); 
-        }, 300); 
+                if (pageHeaderElement) pageHeaderElement.classList.remove('text-fade-in');
+                if (pageContentElement) pageContentElement.classList.remove('text-fade-in');
+                if (pageNumberElement) pageNumberElement.classList.remove('text-fade-in');
+            }, 600); // Match animation duration + delay
+        }, 300); // Duration of fade-out animation
     }
     
     document.getElementById('prevBtn').disabled = index === 0;
@@ -180,6 +196,5 @@ window.onload = () => {
 
     document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
     document.getElementById('prevBtn').addEventListener('click', () => navigate(-1));
-   
     document.getElementById('nextBtn').addEventListener('click', () => navigate(1)); 
-} 
+}
