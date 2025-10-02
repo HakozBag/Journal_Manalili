@@ -1,45 +1,77 @@
-/* --- CSS Variables: Journal Theme --- */
 :root {
-    --bg-light: #fcfbf8; 
-    --card-paper: #fffcf3; 
-    --accent-dark: #4A4A4A; 
-    --line-color: #e0e0e0; 
-    --text-ink: #2c2c2c;
-    --page-line-height: 2.2rem; /* Spacing between ruled lines */
-    --text-line-height: 1.5rem; /* Standard text height */
+    --font-family: 'Merriweather', serif;
+    --page-line-height: 2.2rem;
+    --text-line-height: 1.5rem;
 }
 
-/* --- Base & Body Styles --- */
+.light-theme {
+    --theme-bg: #fcfbf8;
+    --card-paper: #fffcf3;
+    --primary-text: #2c2c2c;
+    --secondary-text: #666;
+    --accent-dark: #4A4A4A;
+    --line-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --shadow-inset: rgba(0, 0, 0, 0.05);
+    --border-color-main: #ddd;
+}
+
+.dark-theme {
+    --theme-bg: #1c1c1e;
+    --card-paper: #28282b;
+    --primary-text: #f0f0f0;
+    --secondary-text: #b0b0b0;
+    --accent-dark: #9dd1d1;
+    --line-color: #444444;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --shadow-inset: rgba(0, 0, 0, 0.2);
+    --border-color-main: #38383a;
+}
+
 body {
-    font-family: 'Merriweather', serif; 
-    background: var(--bg-light);
-    color: var(--text-ink);
+    font-family: var(--font-family); 
+    background: var(--theme-bg);
+    color: var(--primary-text);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     padding: 20px;
+    transition: background-color 0.3s ease;
 }
 
-/* --- Profile Header Styles --- */
+.text-primary-text { color: var(--primary-text); }
+.text-secondary-text { color: var(--secondary-text); }
+.theme-border { border-color: var(--accent-dark) !important; }
+.theme-border-faint { border-bottom-color: var(--border-color-main); }
+
+
 .profile-card {
-    background-color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
-}
-.profile-card h3, .profile-card p {
-    color: var(--text-ink);
+    background-color: var(--card-paper);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    border: 1px solid var(--border-color-main);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* --- Journal Container (The Book) --- */
+.theme-switch-btn {
+    background-color: var(--card-paper);
+    color: var(--accent-dark);
+    border: 2px solid var(--border-color-main);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.theme-switch-btn:hover {
+    background-color: var(--line-color);
+}
+
+
 #journalContainer {
     width: 90%;
     max-width: 850px; 
     height: 85vh; 
     max-height: 800px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
-    border: 1px solid #ccc;
+    box-shadow: 0 10px 30px var(--shadow-color); 
+    border: 1px solid var(--border-color-main);
     border-radius: 4px;
     position: relative;
     z-index: 1;
@@ -47,7 +79,6 @@ body {
     overflow: hidden; 
 }
 
-/* --- Journal Page (The Paper) --- */
 #journal-page {
     position: relative;
     width: 100%;
@@ -55,14 +86,14 @@ body {
     background-color: var(--card-paper); 
     border-radius: 4px;
     padding: 2.5rem 3rem; 
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); 
+    box-shadow: inset 0 0 10px var(--shadow-inset); 
     display: flex;
     flex-direction: column;
+    transition: background-color 0.3s ease;
 }
 
-/* --- Page Headers & Titles --- */
 .page-header {
-    border-bottom: 1px solid #ddd; 
+    border-bottom: 1px solid var(--border-color-main); 
     padding-bottom: 1rem;
     margin-bottom: 2rem;
 }
@@ -70,24 +101,19 @@ body {
     font-size: 2rem;
     font-weight: 700;
     line-height: 1.1;
-    color: var(--text-ink);
 }
 .pageCategory {
-    color: #888; 
     text-transform: none; 
     font-style: italic;
 }
-.pageNumber {
-    color: #888;
-}
 
-/* --- Page Content and Ruled Lines --- */
 .pageContent {
     position: relative;
     padding-top: 10px; 
-    line-height: var(--page-line-height); /* Controls background ruling */
+    line-height: var(--page-line-height);
     overflow-y: auto;
     flex-grow: 1;
+    opacity: 1; 
 }
 
 .pageContent::before {
@@ -98,7 +124,6 @@ body {
     right: 0;
     bottom: 0;
     pointer-events: none;
-    /* Creates the repeating horizontal line pattern */
     background: repeating-linear-gradient(
         to bottom,
         transparent,
@@ -106,15 +131,14 @@ body {
         var(--line-color) calc(var(--page-line-height) - 1px),
         var(--line-color) var(--page-line-height)
     );
+    transition: background 0.3s ease;
 }
 
-/* FIX: Cover Page specific adjustment to prevent title overlap */
 #journal-page .pageContent .text-center > h2 {
     margin-top: calc(var(--page-line-height) / 2); 
     margin-bottom: calc(var(--page-line-height) / 2); 
 }
 
-/* FIX: List Item Alignment for Ruled Lines */
 .pageContent .list-ruled {
     list-style: none;
     padding: 0;
@@ -122,7 +146,7 @@ body {
 }
 
 .pageContent .ruled-list-item {
-    line-height: var(--page-line-height); /* Must match ruling height for perfect alignment */
+    line-height: var(--page-line-height);
     margin-bottom: 0.5rem; 
     padding-bottom: 0;
 }
@@ -130,16 +154,14 @@ body {
 .pageContent .ruled-list-item span {
     line-height: var(--text-line-height); 
     display: block;
-    /* Vertically centers the text within the 2.2rem rule space */
     padding-top: calc((var(--page-line-height) - var(--text-line-height)) / 2); 
 }
 
 .pageContent .ruled-list-item .dot-icon {
     margin-top: 0.8rem;
-    color: #5B5B5B; 
+    color: var(--secondary-text); 
 }
 
-/* --- Navigation Button Styles --- */
 .nav-btn {
     background-color: transparent;
     color: var(--accent-dark);
@@ -155,13 +177,46 @@ body {
 }
 .nav-btn:disabled {
     background-color: transparent;
-    border-color: #ccc;
-    color: #ccc;
+    border-color: var(--line-color);
+    color: var(--line-color);
     cursor: not-allowed;
     opacity: 1;
 }
 
-/* --- Responsive Styles --- */
+@keyframes pixel-out {
+    0% { 
+        opacity: 1; 
+        transform: scale(1) translate(0, 0); 
+        filter: blur(0);
+    }
+    100% { 
+        opacity: 0; 
+        transform: scale(0.95) translate(10px, -10px); 
+        filter: blur(5px);
+    }
+}
+
+@keyframes pixel-in {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.95) translate(-10px, 10px); 
+        filter: blur(5px);
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1) translate(0, 0); 
+        filter: blur(0);
+    }
+}
+
+.fade-out {
+    animation: pixel-out 0.4s ease-in forwards;
+}
+
+.fade-in {
+    animation: pixel-in 0.4s ease-out forwards;
+}
+
 @media (max-width: 768px) {
     #journalContainer {
         height: 95vh;
