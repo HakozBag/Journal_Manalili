@@ -143,39 +143,40 @@ const renderPage = (index) => {
     const pageElement = document.getElementById('journal-page');
     const pageContentElement = pageElement.querySelector('.pageContent');
     const pageHeaderElement = pageElement.querySelector('.page-header');
-    const pageNumberElement = pageElement.querySelector('.pageNumber').parentNode; 
+    // Selecting the element that contains the page number text
+    const pageNumberContainer = pageElement.querySelector('.pageNumber').parentNode; 
 
-    if (pageElement) {
-        // Apply fade-out to header, content, and page number
-        if (pageHeaderElement) pageHeaderElement.classList.add('text-fade-out');
-        if (pageContentElement) pageContentElement.classList.add('text-fade-out');
-        if (pageNumberElement) pageNumberElement.classList.add('text-fade-out');
+    // 1. Start the fade-out/pixelation animation on the current content
+    if (pageHeaderElement) pageHeaderElement.classList.add('text-fade-out');
+    if (pageContentElement) pageContentElement.classList.add('text-fade-out');
+    if (pageNumberContainer) pageNumberContainer.classList.add('text-fade-out');
 
+    // 2. Wait for the fade-out animation to finish (300ms)
+    setTimeout(() => {
+        // 3. Update the content with the new page data
+        updatePageElements(index);
+        
+        // 4. Remove the fade-out class and add the fade-in class to the new content
+        if (pageHeaderElement) {
+            pageHeaderElement.classList.remove('text-fade-out');
+            pageHeaderElement.classList.add('text-fade-in');
+        }
+        if (pageContentElement) {
+            pageContentElement.classList.remove('text-fade-out');
+            pageContentElement.classList.add('text-fade-in');
+        }
+        if (pageNumberContainer) {
+            pageNumberContainer.classList.remove('text-fade-out');
+            pageNumberContainer.classList.add('text-fade-in');
+        }
+        
+        // 5. Clean up the fade-in class after it finishes (600ms total duration)
         setTimeout(() => {
-            updatePageElements(index);
-            
-            // Remove fade-out and add fade-in
-            if (pageHeaderElement) {
-                pageHeaderElement.classList.remove('text-fade-out');
-                pageHeaderElement.classList.add('text-fade-in');
-            }
-            if (pageContentElement) {
-                pageContentElement.classList.remove('text-fade-out');
-                pageContentElement.classList.add('text-fade-in');
-            }
-            if (pageNumberElement) {
-                pageNumberElement.classList.remove('text-fade-out');
-                pageNumberElement.classList.add('text-fade-in');
-            }
-            
-         
-            setTimeout(() => {
-                if (pageHeaderElement) pageHeaderElement.classList.remove('text-fade-in');
-                if (pageContentElement) pageContentElement.classList.remove('text-fade-in');
-                if (pageNumberElement) pageNumberElement.classList.remove('text-fade-in');
-            }, 600); 
-        }, 300);
-    }
+            if (pageHeaderElement) pageHeaderElement.classList.remove('text-fade-in');
+            if (pageContentElement) pageContentElement.classList.remove('text-fade-in');
+            if (pageNumberContainer) pageNumberContainer.classList.remove('text-fade-in');
+        }, 600); 
+    }, 300); 
     
     document.getElementById('prevBtn').disabled = index === 0;
     document.getElementById('nextBtn').disabled = index === journalContent.length - 1;
