@@ -98,7 +98,6 @@ const renderContentToFace = (index, faceElement) => {
     faceElement.querySelector('.pageCategory').innerHTML = page.category;
     faceElement.querySelector('.pageNumber').innerHTML = `Page ${index + 1} / ${journalContent.length}`;
     
-  
     faceElement.querySelector('.pageContent').innerHTML = formatContent(page.content);
 };
 
@@ -120,28 +119,21 @@ const navigate = (direction) => {
         
         const pageContentElement = document.querySelector('#journal-page .pageContent');
 
-
         pageContentElement.classList.add('fade-out');
 
- 
         setTimeout(() => {
-
             currentPageIndex = newIndex;
             
-
             const pageElement = document.getElementById('journal-page');
             const page = journalContent[currentPageIndex];
             pageElement.querySelector('.pageTitle').innerHTML = page.title;
             pageElement.querySelector('.pageCategory').innerHTML = page.category;
             pageElement.querySelector('.pageNumber').innerHTML = `Page ${currentPageIndex + 1} / ${journalContent.length}`;
 
-     
             pageContentElement.innerHTML = formatContent(page.content);
             
-          
             pageContentElement.classList.remove('fade-out');
 
-       
             document.getElementById('prevBtn').disabled = currentPageIndex === 0;
             document.getElementById('nextBtn').disabled = currentPageIndex === journalContent.length - 1;
             
