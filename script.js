@@ -12,10 +12,10 @@ const journalContent = [
     ` },
     { id: 'describe', title: "a. Describe Yourself", category: "Character Profile", content: `
         <p class="text-base leading-relaxed tracking-wide" style="color: var(--primary-text);">I am Cyrus Dominic Manalili, born on March 9, 2006, and I would describe myself as an energetic person especially when it comes to parties or spending time with people. I enjoy being with others rather than being alone since I believe that shared moments are more fun and meaningful. I usually try not to overthink unless it is really necessary although I admit that I sometimes get caught up in distractions or unimportant activities. Even with that habit I still manage to balance my school responsibilities with my tendency to spend time on lighter things which shows that I can handle both while still keeping a sense of fun.
-I enjoy lighthearted situations more than tense or overly serious ones. When conversations become too heavy I often try to shift them into something more playful or funny not because I avoid seriousness but because I naturally prefer to keep things easy. For me life feels better when there is laughter and connection which is why I do my best to bring positive energy wherever I go</p>
+        <br><br>I enjoy lighthearted situations more than tense or overly serious ones. When conversations become too heavy I often try to shift them into something more playful or funny not because I avoid seriousness but because I naturally prefer to keep things easy. For me life feels better when there is laughter and connection which is why I do my best to bring positive energy wherever I go.</p>
         ` },
     { id: 'quotes', title: "c. My Favorite Quote(s)", category: "Inspiration", content: `
-        <p class="text-base leading-relaxed tracking-wide" style="color: var(--primary-text);">My favorite quote is “Life is better when you are laughing.” I like this quote because it feels simple but true. For me laughter makes almost anything lighter whether it is a serious situation a small problem or just an ordinary day. I am the type of person who enjoys keeping things fun and easy so this quote reminds me that even when life gets stressful there is always room to smile or joke around. It also reflects how I like to be around people because laughter is something best shared. Moments feel more alive when there is joy in them and I believe that even the hardest days can become easier if you find a reason to laugh.</p>
+        <p class="text-base leading-relaxed tracking-wide" style="color: var(--primary-text);">My favorite quote is **“Life is better when you are laughing.”** I like this quote because it feels simple but true. For me laughter makes almost anything lighter whether it is a serious situation a small problem or just an ordinary day. I am the type of person who enjoys keeping things fun and easy so this quote reminds me that even when life gets stressful there is always room to smile or joke around. It also reflects how I like to be around people because laughter is something best shared. Moments feel more alive when there is joy in them and I believe that even the hardest days can become easier if you find a reason to laugh.</p>
         ` },
     { id: 'likes', title: "d. Things I Like About Myself", category: "Power-Ups", content: [
         "I am energetic and outgoing",
@@ -157,8 +157,8 @@ const renderPage = (index) => {
           
             setTimeout(() => {
                 pageElement.classList.remove('fade-in');
-            }, 500);
-        }, 300);
+            }, 500); // Wait for fade-in animation to finish
+        }, 300); // Wait for fade-out animation to finish
     }
     
     document.getElementById('prevBtn').disabled = index === 0;
@@ -180,4 +180,6 @@ window.onload = () => {
 
     document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
     document.getElementById('prevBtn').addEventListener('click', () => navigate(-1));
-    document.getElementById('nextBtn').addEventListener('click', () => navigate(
+    // Completing the incomplete function call for 'nextBtn'
+    document.getElementById('nextBtn').addEventListener('click', () => navigate(1)); 
+}
