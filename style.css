@@ -1,3 +1,4 @@
+/* Animation keyframes for text pixelation and fade */
 @keyframes textPixelFadeOut {
     0% { opacity: 1; filter: blur(0px) grayscale(0%); }
     100% { opacity: 0; filter: blur(4px) grayscale(100%); }
@@ -8,13 +9,14 @@
     100% { opacity: 1; filter: blur(0px) grayscale(0%); }
 }
 
-
+/* Classes to apply the animations to text elements */
 .text-fade-out {
     animation: textPixelFadeOut 0.3s ease-in forwards;
 }
 
 .text-fade-in {
-    animation: textPixelFadeIn 0.6s ease-out 0.3s forwards;
+    /* total duration is 0.6s + 0.3s delay = 0.9s from click to finish */
+    animation: textPixelFadeIn 0.6s ease-out forwards; 
 }
 
 :root {
@@ -109,8 +111,8 @@ body {
     transition: background-color 0.3s ease;
 }
 
-
-#journal-page > * {
+/* Apply a transition baseline to the elements that will be animated */
+.page-header, .pageContent, .absolute {
     transition: opacity 0.3s ease, filter 0.3s ease; 
 }
 
