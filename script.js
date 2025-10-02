@@ -84,10 +84,54 @@ const journalContent = [
     ]},
 ];
 
-// --- Utility Functions ---
+// --- Theme Logic ---
+
+const getThemeIcon = (isDark) => {
+    const moonIcon = document.getElementById('moonIcon');
+    const sunIcon = document.getElementById('sunIcon');
+    if (moonIcon && sunIcon) {
+        moonIcon.style.display = isDark ? 'inline-block' : 'none';
+        sunIcon.style.display = isDark ? 'none' : 'inline-block';
+    }
+};
+
+const applyTheme = (themeName) => {
+    const isDark = themeName === 'dark-theme';
+    const body = document.getElementById('app-body');
+    
+    body.classList.remove('light-theme', 'dark-theme');
+    body.classList.add(themeName);
+    
+    getThemeIcon(isDark);
+    
+    localStorage.setItem('journalTheme', themeName);
+};
+
+const toggleTheme = () => {
+    const body = document.getElementById('app-body');
+    const currentTheme = body.classList.contains('dark-theme') ? 'dark-theme' : 'light-theme';
+    const newTheme = currentTheme === 'light-theme' ? 'dark-theme' : 'light-theme';
+    applyTheme(newTheme);
+};
+
+const initializeTheme = () => {
+    const savedTheme = localStorage.getItem('journalTheme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else if (prefersDark) {
+        applyTheme('dark-theme');
+    } else {
+        applyTheme('light-theme'); 
+    }
+};
+
+
+// --- Page Rendering Logic ---
+
 const formatContent = (content) => {
     if (Array.isArray(content)) {
-        // The dot-icon uses the custom CSS style set later
         const dotIcon = `<svg class="w-2.5 h-2.5 mr-3 mt-1 dot-icon flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12"/></svg>`;
         return `<ul class="list-ruled mt-0 text-base" style="color: var(--text-ink);">${content.map(item => `<li class="flex items-start ruled-list-item">${dotIcon}<span>${item}</span></li>`).join('')}</ul>`;
     }
@@ -126,8 +170,10 @@ const navigate = (direction) => {
 
 // --- Initialization ---
 window.onload = () => {
+    initializeTheme();
     renderPage(currentPageIndex);
 
+    document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
     document.getElementById('prevBtn').addEventListener('click', () => navigate(-1));
     document.getElementById('nextBtn').addEventListener('click', () => navigate(1));
 };
